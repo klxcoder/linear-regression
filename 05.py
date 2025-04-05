@@ -4,6 +4,7 @@ Use gradient descent to find the minimum of the function f(x)
 
 import matplotlib.pyplot as plt
 from abc import ABC, abstractmethod
+from typing import Any
 
 class Func(ABC):
     def __init__(self, inputs: list[float]):
@@ -36,22 +37,22 @@ def gradient_descent(f: Func) -> float:
         x -= alpha * dloss_dx
     return x
 
+def draw(ax: Any, f: Func, title: str, x: list[list[float]]):
+    ax.plot(x, f.get_output(x))
+    x_point: float = gradient_descent(f)
+    ax.scatter([x_point], f.calculate([x_point]), color='red')
+    ax.set_title(title)
+
 def main():
     x: list[list[float]] = list(map(lambda x: [x], list(range(-20, 20))))
 
     _, axes = plt.subplots(1, 2, figsize=(10, 5))
 
     f1 = F1(inputs=[1, 2, 5])
-    axes[0].plot(x, f1.get_output(x))
-    x_point: float = gradient_descent(f1)
-    axes[0].scatter([x_point], f1.calculate([x_point]), color='red')
-    axes[0].set_title("f(x) = x*x + 2*x + 5")
-
+    draw(axes[0], f1, "f(x) = 1*x*x + 2*x + 5", x)
+    
     f2 = F2(inputs=[10, 4])
-    axes[1].plot(x, f2.get_output(x))
-    x_point: float = gradient_descent(f2)
-    axes[1].scatter([x_point], f2.calculate([x_point]), color='red')
-    axes[1].set_title("f(x) = 2*x*x*x + 3*x*x + 6*x + 2")
+    draw(axes[1], f2, "f(x) = |x + 10| + 4", x)
 
     plt.show()
 
