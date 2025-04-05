@@ -18,9 +18,6 @@ class F(Func):
         x, = inputs
         return [a*x*x + b*x + c]
 
-# def f(a: float, b: float, c: float, x: float) -> float:
-#     return a*x*x + b*x + c
-
 def gradient_descent(f: Func, a: float, b: float, c: float) -> float:
     x: float = 0
     times: int = 1000
