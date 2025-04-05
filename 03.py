@@ -15,9 +15,14 @@ def sum(*args: Union[int, float]) -> float:
         total += arg
     return total
 
-# Example usage:
-result = sum(1, 2, 3, 4, 5)
-print(result)  # Output: 15.0
+def sum2(a: int, b: int) -> float:
+    return sum(a, b)
 
-result_with_floats = sum(1.5, 2.5, 3.5)
-print(result_with_floats)  # Output: 7.5
+def sum3(a: int, b: int, c: int) -> float:
+    return sum(a, b, c)
+
+s2 = sum2(1, 2)
+print(s2) # 3.0
+
+s3 = sum3(1, 2, 3)
+print(s3) # 6.0
