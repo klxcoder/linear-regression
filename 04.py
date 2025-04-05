@@ -26,7 +26,7 @@ def gradient_descent(f: Func) -> float:
     alpha: float = 0.01
     small: float = 0.01
     for _ in range(times):
-        dloss_dx: float = (f.calculate(weights=[x+small])[0] - f.calculate(weights=[x])[0])/small
+        dloss_dx: float = (f.calculate([x+small])[0] - f.calculate([x])[0])/small
         x -= alpha * dloss_dx
     return x
 
@@ -35,7 +35,7 @@ def main():
     plt.plot(x, x*x + 2*x + 5)
     f = F(inputs=[1, 2, 5])
     x_point: float = gradient_descent(f)
-    plt.scatter([x_point], f.calculate(weights=[x_point]), color='red')
+    plt.scatter([x_point], f.calculate([x_point]), color='red')
     plt.title("f(x)=x*x + 2*x + 5")
     plt.show()
 
