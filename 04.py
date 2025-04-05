@@ -10,6 +10,16 @@ from abc import ABC, abstractmethod
 class Func(ABC):
     @abstractmethod
     def calculate(self, weights: list[float], inputs: list[float]) -> list[float]:
+        """
+        Calculate the result based on the given weights and inputs.
+
+        Args:
+            weights (List[float]): Change frequently, not fixed
+            inputs (List[float]): Fixed, do not change
+
+        Returns:
+            List[float]: A list containing the outputs of the calculation.
+        """
         pass
 
 class F(Func):
