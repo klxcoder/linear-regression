@@ -6,7 +6,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def main():
-    plt.plot(np.arange(10)**2)
+    x = np.arange(-20, 20)
+    y = x*x + 2*x + 5
+    plt.plot(x, y)
     plt.show()
 
 if __name__ == "__main__":
